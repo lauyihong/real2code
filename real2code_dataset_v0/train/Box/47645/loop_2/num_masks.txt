@@ -1,0 +1,12 @@
+./real2code_dataset_v0/train/Box/47645/loop_2/0.hdf5 3
+./real2code_dataset_v0/train/Box/47645/loop_2/1.hdf5 3
+./real2code_dataset_v0/train/Box/47645/loop_2/2.hdf5 3
+./real2code_dataset_v0/train/Box/47645/loop_2/3.hdf5 3
+./real2code_dataset_v0/train/Box/47645/loop_2/4.hdf5 3
+./real2code_dataset_v0/train/Box/47645/loop_2/5.hdf5 3
+./real2code_dataset_v0/train/Box/47645/loop_2/6.hdf5 3
+./real2code_dataset_v0/train/Box/47645/loop_2/7.hdf5 3
+./real2code_dataset_v0/train/Box/47645/loop_2/8.hdf5 3
+./real2code_dataset_v0/train/Box/47645/loop_2/9.hdf5 3
+./real2code_dataset_v0/train/Box/47645/loop_2/10.hdf5 3
+./real2code_dataset_v0/train/Box/47645/loop_2/11.hdf5 3
