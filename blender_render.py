@@ -38,7 +38,7 @@ for FOLDER in 40417 44781 44817 44853 44962 45243 45248 45271 45332 45423 45505 
 """
 
 NUM_LIGHTS = 6
-CAM_DISTANCE = 4 #5 
+CAM_DISTANCE = 4 #5
 CAM_HEIGHT = 0.1 # 0.7 # NOTE: manually set this because bproc.object.compute_poi() seems to always get a lower height
 # POI_RANGE_LOW = np.array([-0.2, -0.2, 0])
 # POI_RANGE_HIGH = np.array([-0.1, -0.1, CAM_HEIGHT]) # shift it back because many drawers are open forward!
