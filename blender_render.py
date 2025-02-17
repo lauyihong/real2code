@@ -532,7 +532,7 @@ def process_folder(args, folder):
             bpy.context.scene.render.film_transparent = True
         # bpy.data.worlds['World'].node_tree.nodes['Background'].inputs[0].default_value = (1, 1, 1, 1)  # RGBA for white
 
-        bproc.world.set_world_background_hdr_img(haven_hdri_path, strength=2.0)
+        bproc.world.set_world_background_hdr_img(haven_hdri_path) # , strength=2.0)
         # save
         output_folder = join(output_path, f"loop_{loop}")
         if (not args.overwrite) and os.path.exists(output_folder):

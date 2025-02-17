@@ -1,3 +1,28 @@
+# Reproduce note
+
+## data process code.
+
+### test
+
+```
+blenderproc run blender_render.py     --data_dir ./mobility_dataset     --out_dir ./real2code_dataset_v0        --folder "47645"    --custom-blender-path ~/blender_download/blender-3.3.1-linux-x64/ --haven_path ./
+```
+
+```
+xvfb-run python preprocess_data.py  --num_augs 3 --obj_type Box --data_dir ./real2code_dataset_v0 --shard_output_dir ./real2code_shards_v0
+```
+
+### Loop
+
+```
+for FOLDER in 19855 20985 22241 22301 22433 25493 26387 26652; do blenderproc run blender_render.py  --data_dir ./mobility_dataset   --out_dir ./real2code_dataset_v0   --folder ${FOLDER}  --custom-blender-path ~/blender_download/blender-3.3.1-linux-x64/ --haven_path ./ -o; done
+
+xvfb-run python preprocess_data.py  --num_augs 3 --obj_type Box --data_dir ./real2code_dataset_v0 --shard_output_dir ./real2code_shards_v0
+```
+
+
+
+
 # Real2code: Reconstruct Articulated Objects via Code Generation
 **[Mandi Zhao](https://mandizhao.github.io/), [Yijia Weng](https://yijiaweng.github.io/), [Dominik Bauer](https://dornik.github.io/), [Shuran Song](https://shurans.github.io/)**
 
