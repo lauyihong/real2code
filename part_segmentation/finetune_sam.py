@@ -333,6 +333,25 @@ def save_model_decoder(model, save_name):
     torch.save(model.mask_decoder.state_dict(), save_name)
 
 def main(args): 
+
+    # 添加调试信息
+    print(f"Checking data directory: {args.data_dir}")
+    print(f"Directory contents: {os.listdir(args.data_dir)}")
+    
+    # 检查训练集目录
+    train_dir = os.path.join(args.data_dir, 'train')
+    if os.path.exists(train_dir):
+        print(f"Train directory contents: {os.listdir(train_dir)}")
+    else:
+        print(f"Train directory does not exist: {train_dir}")
+    
+    # 检查 shard 目录
+    shard_dir = os.path.join(args.data_dir, 'shards')
+    if os.path.exists(shard_dir):
+        print(f"Shard directory contents: {os.listdir(shard_dir)}")
+    else:
+        print(f"Shard directory does not exist: {shard_dir}")
+
     # try dataset & loader
     # dataset_cls = MobilityDataset
     forward_fn = forward_sam
