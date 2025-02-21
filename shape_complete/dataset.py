@@ -260,11 +260,11 @@ class ShapeCompletionDataset(Dataset):
                 # rotate mesh
                 vertices = vertices @ aug_R.T
             voxelgrid = trianglemeshes_to_voxelgrids(   
-                vertices[None].cuda(), faces.cuda(), 
+                vertices[None].cuda(), faces.long().cuda(), 
                 resolution=self.voxel_size, 
                 origin=mesh_origin.cuda(),
                 scale=mesh_scale.cuda()
-                )
+            )
             # check if normalization made it all zero
             if self.aug_obb and torch.sum(voxelgrid) == 0:
                 aug_center, aug_extent = center, extent
@@ -383,7 +383,14 @@ class ShapeCompletionEvalDataset(ShapeCompletionDataset):
         )
          
         return data
+torch.backends.cuda.matmul.allow_tf32 = True  # 允许 TF32，可能优化显存使用
+torch.cuda.set_per_process_memory_fraction(0.98, 0)  # 限制 PyTorch 只用 90% 的显存
+torch.cuda.empty_cache()  # 释放未使用的显存
+torch.cuda.memory_summary(device=None, abbreviated=False)  # 查看显存使用情况
 
+# 设置 max_split_size_mb
+import os
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:128"
 
 if __name__ == "__main__":
     # import wandb 
@@ -393,7 +400,7 @@ if __name__ == "__main__":
         obj_type="Box", obj_folder="*", loop_dir="0", 
         use_aabb=True,
         cache_mesh=False, query_surface_ratio=0.5, input_size=1024, load_pcd_size=1024,
-        query_size=500, 
+        query_size=250, 
         load_voxelgrid=True
         )
     for i in range(10):

@@ -412,6 +412,7 @@ def process_folder(args, folder):
     # bproc.clean_up()
     if len(folder.split('/')) > 1:
         folder = folder.split('/')[-1]
+    print(folder)
     folder_id = int(folder)
     fname = glob(
         join(args.data_dir, args.split, "*", folder, args.input_urdf)

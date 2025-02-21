@@ -7,8 +7,8 @@ import argparse
 import numpy as np
 from tqdm import tqdm
 from os.path import join
-from shape_complete.models import ShapeCompletionModel
-from shape_complete.dataset import ShapeCompletionDataset, ShapeCompletionEvalDataset
+from models import ShapeCompletionModel
+from dataset import ShapeCompletionDataset, ShapeCompletionEvalDataset
 from torch.nn import DataParallel
 from einops import rearrange
 from torch.utils.data import DataLoader
@@ -225,7 +225,7 @@ def run(args):
 if __name__ == "__main__":    
     parser = argparse.ArgumentParser()
     # dataset and loader:
-    parser.add_argument("--data_dir", type=str, default="/local/real/mandi/shape_dataset_v4")
+    parser.add_argument("--data_dir", type=str, default="/home/dingyi/real2code/real2code_shape_dataset_v0")
     parser.add_argument("--batch_size", "-b", type=int, default=32)
     parser.add_argument("--num_input_points", "-i", type=int, default=1024)
     parser.add_argument("--num_query_points", "-q", type=int, default=6000)
@@ -256,7 +256,7 @@ if __name__ == "__main__":
     parser.add_argument("--resume", "-r", type=str, default=None)
     parser.add_argument("--load_step", "-ls", type=int, default=None)
     # logging:
-    parser.add_argument("--log_dir", "-ld", type=str, default="/local/real/mandi/shape_models/")
+    parser.add_argument("--log_dir", "-ld", type=str, default="/home/dingyi/real2code/real2code_shape_dataset_v0/train_log")
     parser.add_argument("--log_interval", "-log", type=int, default=500)
     parser.add_argument("--save_interval", "-save", type=int, default=5000)
     parser.add_argument("--wandb", action="store_true")

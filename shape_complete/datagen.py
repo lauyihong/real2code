@@ -406,12 +406,16 @@ def main(args):
         new_meshes = dict()
         for obj_fname in mesh_fnames:
             _name = obj_fname.split("/")[-1]
+            # print(_name)
             out_fname = join(out_path, "blender_meshes", _name)
-            if not os.path.exists(out_fname): #or args.overwrite:
-                command = f"/home/mandi/ManifoldPlus/build/manifold --input {obj_fname} --output {out_fname} --depth 8\n"
-                os.system(command)
+            # print(out_path)
+            # if not os.path.exists(out_fname): #or args.overwrite:
+            #     command = f"manifold --input {obj_fname} --output {out_fname} --depth 8\n"
+            #     os.system(command)
             link_name = _name.split(".")[0]
-            new_meshes[link_name] = trimesh.load(out_fname, process=True)
+            # print(link_name)
+            new_meshes[link_name] = trimesh.load(obj_fname, process=True)
+            
 
         for loop_dir in loop_dirs:
             loop_id = loop_dir.split("/")[-1]
@@ -434,6 +438,7 @@ def main(args):
                 new_fname = join(out_dir, link_name + "_rot.obj")
                 obb_fname = join(out_dir, f"obb_{link_name}.json")
                 if os.path.exists(new_fname) and os.path.exists(obb_fname) and not args.overwrite:
+                    print("readed")
                     rotated_obbs[link_name] = json.load(open(obb_fname, "r"))
                     rotated_meshes[link_name] = new_fname
                 else:
@@ -447,6 +452,7 @@ def main(args):
                     rotated_obbs[link_name] = obb_dict 
                     
                     with open(obb_fname, "w") as f:
+                        print("written")
                         json.dump(obb_dict, f, indent=4)
             voxel_size = 96
             grid_fnames = [join(out_dir, f"{link_name}_occ_partial_{voxel_size}.pt") for link_name in rotated_meshes]
