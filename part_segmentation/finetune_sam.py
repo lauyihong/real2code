@@ -34,7 +34,7 @@ v2:
 python tune_sam.py --blender --run_name sam_v2 --wandb --data_dir /local/real/mandi/blender_dataset_v2 --prompts_per_mask 16 --lr 1e-3 --wandb --fc_weight 1
 """
 
-CKPT_PATH="/home/mandi/sam_vit_h_4b8939.pth"
+CKPT_PATH="/home/dingyi/real2code/real2code_shape_dataset_v0/train_log/test_query6000_inp1024_qr0.5/step_5000/model_5000.pth"
 
 def extend_instance(obj, mixin):
     """Apply mixins to a class instance after creation"""
@@ -513,7 +513,7 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_dir", type=str, default="/local/real/mandi/blender_dataset_v4")
-    parser.add_argument("--output_dir", type=str, default="/store/real/mandi/sam_models")    
+    parser.add_argument("--output_dir", type=str, default="/home/dingyi/real2code/sam_models")    
     parser.add_argument("--load_run", type=str, default="")
     parser.add_argument("--load_epoch", type=int, default=-1)
     parser.add_argument("--sam_type", default="default", type=str)

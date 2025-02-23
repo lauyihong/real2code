@@ -383,12 +383,12 @@ class ShapeCompletionEvalDataset(ShapeCompletionDataset):
         )
          
         return data
-torch.backends.cuda.matmul.allow_tf32 = True  # 允许 TF32，可能优化显存使用
-torch.cuda.set_per_process_memory_fraction(0.98, 0)  # 限制 PyTorch 只用 90% 的显存
-torch.cuda.empty_cache()  # 释放未使用的显存
-torch.cuda.memory_summary(device=None, abbreviated=False)  # 查看显存使用情况
+torch.backends.cuda.matmul.allow_tf32 = True  # Allow TF32, which may optimize memory usage
+torch.cuda.set_per_process_memory_fraction(0.8, 0)  # Limit PyTorch to only 80% of memory
+torch.cuda.empty_cache()  # Release unused memory
+torch.cuda.memory_summary(device=None, abbreviated=False)  # View memory usage
 
-# 设置 max_split_size_mb
+# Set max_split_size_mb
 import os
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:128"
 
