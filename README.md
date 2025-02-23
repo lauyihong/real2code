@@ -34,9 +34,8 @@ based on the generated data from datagen.py, we train the shape completion model
 
 with 4090s, 5000 eopchs, trining time around 16hours. the testing result is shown as below:
 
-![Shape Completion Testing Sample](./shape_completion_testing_sample.png)
+<img src="./shape_completion_testing\ _sample.jpg " alt="Shape Completion Testing Sample" width="800"/>
 
-<img src="shape_completion_testing_sample.jpg" alt="teaser" width="800"/>
 
 ## LLM fine-tuning.
 
@@ -47,7 +46,6 @@ the author fork the Codellama and commit to provided more information further.
 
 [Arxiv](https://arxiv.org/abs/2406.08474) | [Website](https://real2code.github.io/)
 
- 
 <img src="real2code-teaser-pic.jpg" alt="teaser" width="800"/>
 
 ## Installation
