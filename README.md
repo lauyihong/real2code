@@ -1,6 +1,6 @@
 # Reproduce note
 
-## data process code.
+## data processing.
 
 ### test
 
@@ -12,6 +12,10 @@ blenderproc run blender_render.py     --data_dir ./mobility_dataset     --out_di
 xvfb-run python preprocess_data.py  --num_augs 3 --obj_type Box --data_dir ./real2code_dataset_v0 --shard_output_dir ./real2code_shards_v0
 ```
 
+missing the reder of pointcloud. 
+find the code in `shape_complete/datagen.py` and sucessifully debug and run it through. the generated data is shown as below photo.
+
+
 ### Loop
 
 ```
@@ -20,8 +24,23 @@ for FOLDER in 19855 20985 22241 22301 22433 25493 26387 26652; do blenderproc ru
 xvfb-run python preprocess_data.py  --num_augs 3 --obj_type Box --data_dir ./real2code_dataset_v0 --shard_output_dir ./real2code_shards_v0
 ```
 
+## SAM fine-tuning.
+missing the code of sam fine-tuning, which should be included in `image_seg/`
 
 
+## Shape completion model training.
+
+based on the generated data from datagen.py, we train the shape completion model with `./shape_complete/train.p`
+
+with 4090s, 5000 eopchs, trining time around 16hours. the testing result is shown as below:
+
+![Shape Completion Testing Sample](./shape_completion_testing_sample.png)
+
+<img src="shape_completion_testing_sample.jpg" alt="teaser" width="800"/>
+
+## LLM fine-tuning.
+
+the author fork the Codellama and commit to provided more information further.
 
 # Real2code: Reconstruct Articulated Objects via Code Generation
 **[Mandi Zhao](https://mandizhao.github.io/), [Yijia Weng](https://yijiaweng.github.io/), [Dominik Bauer](https://dornik.github.io/), [Shuran Song](https://shurans.github.io/)**
